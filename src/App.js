@@ -1,6 +1,29 @@
 import "./App.css";
+import { useState } from "react";
+
+import { Form } from "./components/Form";
+import { List } from "./components/List";
 
 function App() {
+  // const [name, setName] = useState("");
+  const [list, setList] = useState([]);
+
+  // const handleOnChange = (e) => {
+  //   // const str = e.target.value;
+  //   // console.log(str);
+  //   const { value } = e.target;
+  //   setName(value);
+  // };
+  // const handleOnSubmit = (e) => {
+  //   e.preventDefault();
+
+  // };
+
+  const addUser = (name) => {
+    setList([...list, name]);
+  };
+  // console.log(list);
+
   return (
     <div
       className="wrapper"
@@ -17,21 +40,8 @@ function App() {
           padding: "2rem",
         }}
       >
-        <div className="display">as you type</div>
-        <div className="form">
-          <form action="">
-            <input type="text" />
-            <button>Add User</button>
-          </form>
-          <hr />
-          <div className="list">
-            <ul>
-              <li>Kakashi Hatake </li>
-              <li>Itachi Uchiha </li>
-              <li>Shikamaru Nara </li>
-            </ul>
-          </div>
-        </div>
+        <Form addUser={addUser} />
+        <List list={list} />
       </div>
     </div>
   );
